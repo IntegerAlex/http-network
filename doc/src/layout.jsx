@@ -1,8 +1,7 @@
-import { Link, NavLink } from "react-router-dom";
 import Header from "./components/header";
 import Typography from "./components/general/typography";
 import { useState } from "react";
-
+import { NavLink } from "react-router-dom";
 const Layout = ({ children }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -10,19 +9,20 @@ const Layout = ({ children }) => {
     <div className="flex flex-col min-h-screen w-full bg-black text-white">
       <Header />
       <div className="flex flex-1">
+        {/* Sidebar Navigation */}
         <nav
-          className={`w-48 bg-gray-900 p-4 ${
-            isNavOpen ? "block" : "hidden"
-          } md:block`}
+          className={`w-64 bg-[#0F1115] p-4 transition-all duration-300 ease-in-out transform ${
+            isNavOpen ? "translate-x-0" : "-translate-x-full"
+          } md:translate-x-0 md:block`}
         >
           <ul className="space-y-4">
             <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `text-white hover:text-gray-300 ${
-                    isActive ? "font-bold" : ""
-                  }`
+                  `flex items-center gap-3 text-[#A6A4A0]  hover:text-gray-300 ${
+                    isActive ? "bg-gray-800 text-blue-400 font-bold rounded-md" : ""
+                  } p-2`
                 }
               >
                 <Typography variant="body1">Introduction</Typography>
@@ -32,9 +32,9 @@ const Layout = ({ children }) => {
               <NavLink
                 to="/features"
                 className={({ isActive }) =>
-                  `text-white hover:text-gray-300 ${
-                    isActive ? "font-bold" : ""
-                  }`
+                  `flex items-center gap-3 text-[#A6A4A0] hover:text-gray-300 ${
+                    isActive ? "bg-gray-800 text-blue-400 font-bold rounded-md" : ""
+                  } p-2`
                 }
               >
                 <Typography variant="body1">Features</Typography>
@@ -44,9 +44,9 @@ const Layout = ({ children }) => {
               <NavLink
                 to="/installation"
                 className={({ isActive }) =>
-                  `text-white hover:text-gray-300 ${
-                    isActive ? "font-bold" : ""
-                  }`
+                  `flex items-center gap-3 text-[#A6A4A0]  hover:text-gray-300 ${
+                    isActive ? "bg-gray-800 text-blue-400 font-bold rounded-md" : ""
+                  } p-2`
                 }
               >
                 <Typography variant="body1">Installation</Typography>
@@ -56,21 +56,22 @@ const Layout = ({ children }) => {
               <NavLink
                 to="/quickstart"
                 className={({ isActive }) =>
-                  `text-white hover:text-gray-300 ${
-                    isActive ? "font-bold" : ""
-                  }`
+                  `flex items-center gap-3 text-[#A6A4A0]  hover:text-gray-300 ${
+                    isActive ? "bg-gray-800 text-blue-400 font-bold rounded-md" : ""
+                  } p-2`
                 }
               >
-                <Typography variant="body1">Quick Start</Typography>
+                <Typography variant="body1">Quick Start</Typography> 
+              
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/helloworld"
+                to="/helloWorld"
                 className={({ isActive }) =>
-                  `text-white hover:text-gray-300 ${
-                    isActive ? "font-bold" : ""
-                  }`
+                  `flex items-center gap-3 text-[#A6A4A0]  hover:text-gray-300 ${
+                    isActive ? "bg-gray-800 text-blue-400 font-bold rounded-md" : ""
+                  } p-2`
                 }
               >
                 <Typography variant="body1">Hello World</Typography>
@@ -78,7 +79,10 @@ const Layout = ({ children }) => {
             </li>
           </ul>
         </nav>
-        <main className="flex-1 p-4 bg-gray-800 text-white">
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-4 bg-gray-800 text-[#A6A4A0] ">
+          {/* Hamburger button for mobile */}
           <button
             className="md:hidden mb-4 text-blue-500"
             onClick={() => setIsNavOpen(!isNavOpen)}
@@ -93,4 +97,3 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
-
